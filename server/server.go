@@ -13,15 +13,15 @@ func main() {
     }
     defer ln.Close()
 
-    fmt.Println("Server listening on port 9000...")
-    for {
-        conn, err := ln.Accept()
-        if err != nil {
-            fmt.Println("Error accepting:", err)
+    fmt.Println("Server Started on port 9000");
+    for{
+        conn,err := ln.Accept()
+        if err !=nil{
+            fmt.Println("Error accepting another client connection:",err)
             continue
         }
         clients = append(clients, conn)
-        fmt.Println("New client connected:", conn.RemoteAddr())
+        fmt.Println("New client connected:",conn.RemoteAddr())
         go handleClient(conn)
     }
 }
